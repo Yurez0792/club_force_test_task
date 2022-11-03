@@ -8,7 +8,6 @@ import 'package:club_force_test_task/domain/mappers/albums/albums_mapper.dart';
 import 'package:club_force_test_task/domain/use_cases/album/get_album_items_by_id.dart';
 import 'package:club_force_test_task/domain/use_cases/albums/get_albums_by_title_use_case.dart';
 import 'package:club_force_test_task/domain/use_cases/albums/get_albums_use_case.dart';
-import 'package:club_force_test_task/presentation/general/screen.dart';
 import 'package:club_force_test_task/presentation/utils/logger.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -16,7 +15,7 @@ import 'package:get_it/get_it.dart';
 
 final locator = GetIt.instance;
 
-const _apiBaseUrlKey = 'API_BASE_URL';
+const apiBaseUrlKey = 'API_BASE_URL';
 
 void setup() {
   locator.registerLazySingleton<AppLogger>(() => AppLogger());
@@ -24,7 +23,7 @@ void setup() {
   locator.registerLazySingleton<Dio>(
     () => Dio(
       BaseOptions(
-        baseUrl: dotenv.env[_apiBaseUrlKey] ?? '',
+        baseUrl: dotenv.env[apiBaseUrlKey] ?? '',
       ),
     ),
   );
@@ -80,9 +79,5 @@ void setup() {
       mapper: locator.get<AlbumItemsMapper>(),
       appLogger: locator.get<AppLogger>(),
     ),
-  );
-
-  locator.registerLazySingleton<Screen>(
-    () => Screen(),
   );
 }

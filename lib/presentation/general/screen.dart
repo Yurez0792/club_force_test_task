@@ -5,7 +5,13 @@ import 'package:flutter/material.dart';
 class Screen {
   late double scale;
 
-  Screen() {
+  static final Screen _singleton = Screen._internal();
+
+  factory Screen.getInstance() {
+    return _singleton;
+  }
+
+  Screen._internal() {
     scale = getScaleFactor();
   }
 
