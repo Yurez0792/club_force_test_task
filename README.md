@@ -71,11 +71,11 @@ There is we do not do real API requests in integration tests, that's why we need
 For faking, we are using faker package
 faker [faker](https://pub.dev/packages/faker)
 
-Base class for faking data during testing has already crated - FakeModelFactory. FakeModelFactory located under path:
+Base class for faking data during testing has already crated - `FakeModelFactory`. `FakeModelFactory` located under path:
 `integration_test/fake_generator/fake_model_factory.dart`
 
-Every specific data generator should extend FakeModelFactory and realize inherited methods,
-pass the type that you are going to fake, to the generic of FakeModelFactory. For example:
+Every specific data generator should extend `FakeModelFactory` and realize inherited methods,
+pass the type that you are going to fake, to the generic of `FakeModelFactory`. For example:
 ```
 class GroupsGenerator extends FakeModelFactory<Group> {}
 ```
@@ -108,6 +108,3 @@ Using the terminal, go to the root directory of your project and:
       `$ open coverage/html/index.html`
 
 Web presentation of the test coverage has his advantage, as there is present ability to see coverage per file.
-
-
-
